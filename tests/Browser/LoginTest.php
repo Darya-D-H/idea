@@ -23,7 +23,7 @@ test('logs out a user', function (): void {
     $this->actingAs($user);
 
     visit('/')->press('Log Out');
-        
+
     $this->assertGuest();
 
 });

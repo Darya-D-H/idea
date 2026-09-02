@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Database\Eloquent\Collection;
 use App\Models\Idea;
 use App\Models\User;
 
