@@ -1,3 +1,5 @@
-<a {{ $attributes(['class' => 'border border-border rounded-lg bg-card p-4 block']) }}>
+@props(['is' => 'a'])
+
+<{{ $is }} {{ $attributes(['class' => 'border border-border rounded-lg bg-card p-4 block']) }}>
     {{ $slot }}
-</a>
+</{{ $is }}>
