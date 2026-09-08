@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreIdeaRequest;
-use App\Http\Requests\UpdateIdeaRequest;
+use App\Actions\CreateIdea;
+use App\Actions\DeleteIdea;
+use App\Actions\UpdateIdea;
+
+use App\Http\Requests\IdeaRequest;
 use App\IdeaStatus;
+
 use App\Models\Idea;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class IdeaController extends Controller
 {
@@ -18,6 +24,7 @@ class IdeaController extends Controller
      */
     public function index(Request $request)
     {
+        /** @var User $user */
         $user = Auth::user();
 
         $ideas = $user
@@ -46,12 +53,12 @@ class IdeaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreIdeaRequest $request)
+    public function store(IdeaRequest $request, CreateIdea $action)
     {
-        Auth::user()->ideas()->create($request->validated());
 
-        return to_route('idea.index')
-            ->with('success', 'Idea created!');
+        $action->handle($request->safe()->all());
+
+        return to_route('idea.index')->with('success', 'Idea created!');
     }
 
     /**
@@ -59,6 +66,8 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
+        Gate::authorize('workWith', $idea);
+
         return view('idea.show', [
             'idea' => $idea,
         ]);
@@ -69,24 +78,29 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea): void
     {
-        //
+        Gate::authorize('workWith', $idea);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateIdeaRequest $request, Idea $idea): void
+    public function update(IdeaRequest $request, Idea $idea, UpdateIdea  $action)
     {
-        //
+        Gate::authorize('workWith', $idea);
+
+        $action->handle($request->safe()->all(), $idea);
+
+        return back()->with('success', 'Idea Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Idea $idea)
+    public function destroy(Idea $idea, DeleteIdea $action)
     {
+        Gate::authorize('workWith', $idea);
 
-        $idea->delete();
+        $action->handle($idea);
 
         return to_route('idea.index');
 

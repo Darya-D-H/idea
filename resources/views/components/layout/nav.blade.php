@@ -1,4 +1,4 @@
-<nav class="border-b border-border px-6">
+<nav class="sticky top-0 z-40 border-b border-border px-6 bg-background/80 backdrop-blur-md">
     <div class="max-w-7xl mx-auto h-16 flex items-center justify-between">
         <div>
             <a href="/">

@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use App\Models\Idea;
 
 it('creates a new idea for a certain auth user', function () {
 
@@ -12,17 +11,23 @@ it('creates a new idea for a certain auth user', function () {
         ->fill('title', 'Some Example Title')
         ->click('@button-status-completed')
         ->fill('description', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-        ->fill('@new-link','https://example.com')
+        ->fill('@new-link', 'https://example.com')
         ->click('@submit-new-link-button')
-        ->fill('@new-link','https://laravel.com')
+        ->fill('@new-link', 'https://laravel.com')
         ->click('@submit-new-link-button')
+        ->fill('@new-step', 'Plan a test')
+        ->click('@submit-new-step-button')
+        ->fill('@new-step', 'Execute a test')
+        ->click('@submit-new-step-button')
         ->press('Create')
         ->assertPathIs('/ideas');
 
-    expect($user->ideas()->first())->toMatchArray([
+    expect($idea = $user->ideas()->first())->toMatchArray([
         'title' => 'Some Example Title',
         'status' => 'completed',
         'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        'links'=> ['https://example.com','https://laravel.com'],
+        'links' => ['https://example.com', 'https://laravel.com'],
     ]);
+
+    expect($idea->steps)->toHaveCount(2);
 });
