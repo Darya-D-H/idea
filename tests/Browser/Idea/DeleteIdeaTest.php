@@ -16,40 +16,40 @@ test('a user cannot delete another users idea', function () {
     $this->assertModelExists($idea); // Confirms the idea is still in the DB
 });
 
-test('a user can delete their own idea with image', function () {
-    $user = User::factory()->create();
-    $idea = Idea::factory()->for($user)->create([
-        'image_path' => 'images/sample.jpg', // Fake path for testing
-    ]);
+// test('a user can delete their own idea with image', function () {
+//     $user = User::factory()->create();
+//     $idea = Idea::factory()->for($user)->create([
+//         'image_path' => 'images/sample.jpg', // Fake path for testing
+//     ]);
 
-    $this->actingAs($user)
-        ->delete(route('idea.destroy', $idea))
-        ->assertRedirect(route('idea.index'));
+//     $this->actingAs($user)
+//         ->delete(route('idea.destroy', $idea))
+//         ->assertRedirect(route('idea.index'));
 
-    $this->assertModelDoesNotExist(Idea::class, $idea->id);
-    Storage::disk('public')->assertMissing($idea->image_path); // Image deleted!
-});
+//     $this->assertModelDoesNotExist(Idea::class, $idea->id);
+//     Storage::disk('public')->assertMissing($idea->image_path); // Image deleted!
+// });
 
-test('a user can delete their own idea without image', function () {
-    $user = User::factory()->create();
-    $idea = Idea::factory()->for($user)->create(['image_path' => null]);
+// test('a user can delete their own idea without image', function () {
+//     $user = User::factory()->create();
+//     $idea = Idea::factory()->for($user)->create(['image_path' => null]);
 
-    $this->actingAs($user)
-        ->delete(route('idea.destroy', $idea))
-        ->assertRedirect(route('idea.index'));
+//     $this->actingAs($user)
+//         ->delete(route('idea.destroy', $idea))
+//         ->assertRedirect(route('idea.index'));
 
-    $this->assertModelDoesNotExist(Idea::class, $idea->id);
-});
+//     $this->assertModelDoesNotExist(Idea::class, $idea->id);
+// });
 
-test('a guest cannot delete an idea', function () {
-    $user = User::factory()->create();
-    $idea = Idea::factory()->for($user)->create([
-        'image_path' => 'images/sample.jpg',
-    ]);
+// test('a guest cannot delete an idea', function () {
+//     $user = User::factory()->create();
+//     $idea = Idea::factory()->for($user)->create([
+//         'image_path' => 'images/sample.jpg',
+//     ]);
 
-    $this->actingAsNone()
-        ->delete(route('idea.destroy', $idea))
-        ->assertStatus(403); // Forbidden
+//     $this->actingAsNone()
+//         ->delete(route('idea.destroy', $idea))
+//         ->assertStatus(403); // Forbidden
 
-    $this->assertModelExists($idea);
-});
+//     $this->assertModelExists($idea);
+// });

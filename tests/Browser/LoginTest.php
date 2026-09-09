@@ -10,7 +10,7 @@ test('logs in a user', function (): void {
         ->fill('email', $user->email)
         ->fill('password', '20192010')
         ->press('Sign in')
-        ->assertPathIs('/');
+        ->assertRoute('idea.index');
 
     $this->assertAuthenticated();
 

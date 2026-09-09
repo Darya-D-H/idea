@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\Idea;
+use App\Models\User;
 
 it('edits an existing idea for a certain auth user', function () {
 
@@ -25,7 +25,7 @@ it('edits an existing idea for a certain auth user', function () {
         'title' => 'Some Example Title',
         'status' => 'completed',
         'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        'links' => [ $idea->links[0], 'https://example.com'],
+        'links' => [$idea->links[0], 'https://example.com'],
     ]);
 
     expect($idea->steps)->toHaveCount(1);

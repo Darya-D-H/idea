@@ -7,17 +7,18 @@
         </div>
         <div class="flex items-center gap-x-5">
             @auth
+                <a href="{{ route('profile.edit') }}" class="btn-secondary">Edit Profile</a>
                 <form method="POST" action="/logout">
                     @csrf
                     <button type="submit" class="btn">Log Out</button>
                 </form>
             @endauth
-            
+
             @guest
                 <a href="/login">Sign In</a>
-                <a href="/register" class="btn">Register</a>    
+                <a href="/register" class="btn">Register</a>
             @endguest
-            
+
         </div>
     </div>
 </nav>
