@@ -2,7 +2,6 @@
 
 use App\Models\Idea;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 
 test('a user cannot delete another users idea', function () {
     $owner = User::factory()->create();
