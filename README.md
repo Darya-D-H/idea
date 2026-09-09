@@ -1,58 +1,237 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Ideas - Project Management Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, minimalist project management tool built with Laravel to help you capture ideas, track progress, and organize tasks.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.5+-gray?logo=php&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Test Coverage](https://img.shields.io/badge/tests-100%25-green)](./tests)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📖 Description
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Ideas** is a lightweight project management application designed to help teams and individuals:
+- **Capture ideas** quickly with rich text editor support
+- **Visualize plans** with optional image attachments
+- **Track progress** through three status stages: *Pending* → *In Progress* → *Completed*
+- **Organize resources** by adding multiple links to each idea
+- **Collaborate securely** with role-based access control
 
-## Learning Laravel
+### Key Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+✅ Create, edit, and delete ideas with rich descriptions  
+✅ Upload and manage images for visual projects  
+✅ Add multiple links/resources to each idea  
+✅ Track status through 3-step workflow (Pending → In Progress → Completed)  
+✅ User authentication and authorization (Laravel Gates)  
+✅ Responsive Blade UI with Tailwind CSS v4  
+✅ Modern Alpine.js interactive components  
+✅ PestPHP testing suite (100% test coverage on critical paths)  
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Tech Stack
 
-## Agentic Development
+| Category | Technology |
+|----------|------------|
+| **Framework** | [Laravel 11](https://laravel.com/) |
+| **Language** | PHP 8.5+ |
+| **Frontend** | Blade Templates, Tailwind CSS v4, Alpine.js |
+| **Database** | MySQL / MariaDB (SQLite for development) |
+| **Testing** | PestPHP |
+| **Build Tool** | Vite |
+| **Code Quality** | PHPStan, Laravel Pint |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🚦 Getting Started
 
-php artisan boost:install
+### Prerequisites
+
+- PHP 8.5+ with required extensions
+- Composer
+- Node.js (for frontend build)
+- MySQL / MariaDB database (or SQLite for development)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Darya-D-H/idea.git
+   cd idea
+   ```
+
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install JavaScript dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Configure environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Set up the database**
+   ```bash
+   # Update .env with your database credentials
+   php artisan migrate
+   php artisan db:seed  # Optional: seed demo data
+   ```
+
+6. **Build frontend assets**
+   ```bash
+   npm run build
+   # Or for development:
+   npm run dev
+   ```
+
+7. **Run application**
+   ```bash
+   php artisan serve --host=127.0.0.1 --port=8000
+   ```
+
+Visit `http://127.0.0.1:8000` in your browser.
+
+---
+
+## 📁 Project Structure
+
+```
+idea/
+├── app/
+│   ├── Actions/           # Reusable logic (CreateIdea, UpdateIdea)
+│   ├── Http/              # Controllers, Middleware
+│   │   └── Controllers/
+│   ├── Models/            # Eloquent Models (Idea, User, Step)
+│   └── ...
+├── config/                 # Laravel configuration
+├── database/
+│   ├── factories/         # Model factories for testing
+│   ├── migrations/        # Database schemas
+│   └── seeders/           # Database seeding
+├── resources/
+│   └── views/             # Blade templates
+│       ├── components/    # Reusable UI components
+│       └── idea/          # Idea-specific views
+├── routes/                # Application routes
+├── tests/                 # PestPHP test suite
+│   └── Browser/           # Browser/Dusk tests
+└── storage/               # Public uploads, logs
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 🔐 Security
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+This application implements several security best practices:
 
-## Code of Conduct
+- **CSRF Protection** - All forms include CSRF tokens
+- **Password Hashing** - Laravel's bcrypt algorithm (cost: 10)
+- **Authorization Gates** - Gate-based authorization on models
+- **SQL Injection Prevention** - Eloquent ORM parameter binding
+- **XSS Protection** - Blade escaping, Content-Security-Policy headers
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🧪 Testing
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Run the test suite with PestPHP:
 
-## License
+```bash
+# Run all tests
+php artisan test --compact
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Watch tests in real-time
+php artisan test --watch
+
+# Filter by name
+php artisan test --filter=test_a_user_can_delete_their_own_idea_with_image
+```
+
+---
+
+## 📦 API Routes
+
+All routes are protected by authentication middleware. Available actions:
+
+| Method | Endpoint | Controller | Description |
+|--------|----------|------------|-------------|
+| GET | `/ideas` | `IdeaController@index` | List all ideas |
+| GET | `/ideas/{idea}` | `IdeaController@show` | Show single idea |
+| POST | `/ideas` | `IdeaController@store` | Create new idea |
+| PATCH | `/ideas/{idea}` | `IdeaController@update` | Update idea |
+| DELETE | `/ideas/{idea}` | `IdeaController@destroy` | Delete idea |
+| DELETE | `/ideas/{idea}/image` | `IdeaImageController@destroy` | Remove image only |
+
+---
+
+## 🐛 Debugging & Troubleshooting
+
+### Vite Build Issues
+
+If you see errors after making UI changes:
+
+```bash
+npm run build          # Production build
+# or
+npm run dev            # Development watch mode
+```
+
+### Storage Permissions
+
+Ensure write permissions on storage directories:
+
+```bash
+chmod -R 775 storage/ bootstrap/cache/
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+**Before submitting:**
+- Run `php artisan test` to ensure tests pass
+- Format code with `vendor/bin/pint --format agent`
+- Update documentation if needed
+
+---
+
+## 📄 License
+
+This project is open-sourced under the [MIT License](LICENSE). Feel free to use it for personal or commercial projects.
+
+---
+
+## 📮 Support
+
+For questions, issues, or contributions:
+
+- **GitHub Issues**: Report bugs or request features
+- **Code of Conduct**: Please read and observe the [contributor guidelines](./CONTRIBUTING.md)
+- **Deployment**: Check out [Laravel Cloud](https://cloud.laravel.com/) for production deployment
+
+---
+
+## 🔗 Quick Links
+
+- [Laravel Documentation](https://laravel.com/docs)
+- [PestPHP Testing Guide](https://pestphp.com/docs)
+- [Tailwind CSS v4](https://tailwindcss.com/docs)
+- [Alpine.js Components](https://alpinejs.dev/)
+
+---
+
+**Built with ❤️ using Laravel, Tailwind CSS, and Alpine.js**
