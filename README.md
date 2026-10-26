@@ -1,4 +1,4 @@
-# 🚀 Ideas - Project Management Application
+# Ideas - Project Management Application
 
 A modern, minimalist project management tool built with Laravel to help you capture ideas, track progress, and organize tasks.
 
@@ -9,7 +9,7 @@ A modern, minimalist project management tool built with Laravel to help you capt
 
 ---
 
-## 📖 Description
+## Description
 
 **Ideas** is a lightweight project management application designed to help teams and individuals:
 - **Capture ideas** quickly with rich text editor support
@@ -20,18 +20,18 @@ A modern, minimalist project management tool built with Laravel to help you capt
 
 ### Key Features
 
-✅ Create, edit, and delete ideas with rich descriptions  
-✅ Upload and manage images for visual projects  
-✅ Add multiple links/resources to each idea  
-✅ Track status through 3-step workflow (Pending → In Progress → Completed)  
-✅ User authentication and authorization (Laravel Gates)  
-✅ Responsive Blade UI with Tailwind CSS v4  
-✅ Modern Alpine.js interactive components  
-✅ PestPHP testing suite (100% test coverage on critical paths)  
+- Create, edit, and delete ideas with rich descriptions  
+- Upload and manage images for visual projects  
+- Add multiple links/resources to each idea  
+- Track status through 3-step workflow (Pending → In Progress → Completed)  
+- User authentication and authorization (Laravel Gates)  
+- Responsive Blade UI with Tailwind CSS v4  
+- Modern Alpine.js interactive components  
+- PestPHP testing suite (100% test coverage on critical paths)  
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Technology |
 |----------|------------|
@@ -45,7 +45,7 @@ A modern, minimalist project management tool built with Laravel to help you capt
 
 ---
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -101,7 +101,7 @@ Visit `http://127.0.0.1:8000` in your browser.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 idea/
@@ -128,7 +128,7 @@ idea/
 
 ---
 
-## 🔐 Security
+## Security
 
 This application implements several security best practices:
 
@@ -140,7 +140,7 @@ This application implements several security best practices:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Run the test suite with PestPHP:
 
@@ -157,7 +157,7 @@ php artisan test --filter=test_a_user_can_delete_their_own_idea_with_image
 
 ---
 
-## 📦 API Routes
+## API Routes
 
 All routes are protected by authentication middleware. Available actions:
 
@@ -172,7 +172,7 @@ All routes are protected by authentication middleware. Available actions:
 
 ---
 
-## 🐛 Debugging & Troubleshooting
+## Debugging & Troubleshooting
 
 ### Vite Build Issues
 
@@ -209,7 +209,7 @@ chmod -R 775 storage/ bootstrap/cache/
 
 ---
 
-## 📄 License
+## License
 
 This project is open-sourced under the [MIT License](LICENSE). Feel free to use it for personal or commercial projects.
 
